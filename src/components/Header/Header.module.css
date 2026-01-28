@@ -1,7 +1,7 @@
 .header {
     padding: 24px 0;
-    background-color: #F7F7F7;
-    border-bottom: 1px solid #DADDE1;
+    background-color: var(--inputs);
+    border-bottom: 1px solid var(--gray-light);
 }
 
 .container {
@@ -17,7 +17,7 @@
     font-weight: 600;
     font-size: 24px;
     line-height: 1.2;
-    color: #101828;
+    color: var(--main);
 }
 
 .nav {
@@ -25,13 +25,18 @@
     gap: 32px;
 }
 
-.nav a {
+.link {
     font-weight: 500;
     font-size: 16px;
-    color: #101828;
+    line-height: 1.5;
+    color: var(--main);
     transition: color 0.3s ease;
 }
 
-.nav a:hover {
-    color: #E44848;
+.link:hover {
+    color: var(--button-hover);
+}
+
+.active {
+    color: var(--button);
 }

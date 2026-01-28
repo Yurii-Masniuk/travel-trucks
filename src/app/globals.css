@@ -1,6 +1,16 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --main: #101828;
+  --text: #475467;
+  --white: #fff;
+  --inputs: #f7f7f7;
+  --badges: #f2f4f7;
+  --gray: #6c717b;
+  --gray-light: #dadde1;
+  --button: #e44848;
+  --button-hover: #d84343;
+  --rating: #ffc531;
+
+  --font-family: "Inter", sans-serif;
 }
 
 * {
@@ -10,8 +20,11 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  color: #101828;
+  font-family: var(--font-family);
+  color: var(--main);
+  background-color: var(--white);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -22,5 +35,6 @@ a {
 button {
   cursor: pointer;
   border: none;
-  background: none;
+  outline: none;
+  font-family: inherit;
 }
