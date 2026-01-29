@@ -41,4 +41,14 @@ export const getCampers = async (page = 1, limit = 4, filters: FilterParams = {}
   }
 };
 
+export const getCamperById = async (id: string) => {
+  try {
+    const response = await api.get(`/campers/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching camper details", error);
+    return null;
+  }
+};
+
 export default api;

@@ -2,16 +2,20 @@
     display: flex;
     gap: 24px;
     padding: 24px;
-    border: 1px solid var(--gray-light);
+    border: 1px solid rgba(16, 24, 40, 0.2);
     border-radius: 20px;
-    width: 100%;
-    background-color: var(--white);
+    background-color: #ffffff;
+    height: 358px;
+    /* Фіксована висота */
+    box-sizing: border-box;
+    width: 888px;
+    /* Або 100%, залежно від контейнера */
 }
 
 .imageWrapper {
+    width: 290px;
+    height: 310px;
     flex-shrink: 0;
-    width: 292px;
-    height: 320px;
     border-radius: 10px;
     overflow: hidden;
 }
@@ -22,92 +26,78 @@
     object-fit: cover;
 }
 
-.details {
-    flex-grow: 1;
+.content {
+    flex: 1;
     display: flex;
     flex-direction: column;
-}
-
-.header {
-    margin-bottom: 24px;
+    min-width: 0;
+    /* КРИТИЧНО для того, щоб внутрішні елементи могли переноситися */
 }
 
 .titleRow {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 8px;
+    align-items: center;
 }
 
 .name {
-    font-weight: 600;
     font-size: 24px;
-    line-height: 1.25;
-    color: var(--main);
-    max-width: 340px;
+    font-weight: 600;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.priceRow {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.price {
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 1.25;
-    color: var(--main);
-}
-
 .meta {
     display: flex;
     gap: 16px;
-    font-size: 16px;
-    line-height: 1.5;
-}
-
-.rating {
-    text-decoration: underline;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.location {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    margin: 8px 0 24px;
 }
 
 .description {
     font-size: 16px;
-    line-height: 1.5;
-    color: var(--text);
+    color: #475467;
     margin-bottom: 24px;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Обрізаємо опис, щоб він не роздував картку */
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    /* ОЦЕ ДОЗВОЛЯЄ ПЕРЕНОСИТИ ІКОНКИ НА НОВИЙ РЯДОК */
+    gap: 8px;
+    width: 100%;
+    max-height: 85px;
+    /* Обмежуємо висоту секції опцій */
     overflow: hidden;
 }
 
-.button {
-    margin-top: auto;
-    padding: 16px 40px;
-    background-color: var(--button);
-    color: var(--white);
-    border: none;
-    border-radius: 200px;
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    /* Компактні бейджі як на макеті */
+    background-color: #F2F4F7;
+    border-radius: 100px;
+    font-size: 14px;
     font-weight: 500;
-    font-size: 16px;
-    width: fit-content;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-.button:hover {
-    background-color: var(--button-hover);
+.buttonWrapper {
+    margin-top: auto;
+    /* Притискає кнопку до низу контенту */
+}
+
+.button {
+    display: inline-flex;
+    padding: 16px 40px;
+    background-color: #E44848;
+    color: white !important;
+    border-radius: 200px;
+    font-weight: 500;
+    text-decoration: none;
 }

@@ -1,47 +1,42 @@
-"use client";
-
-import { useState } from 'react';
-import { FilterParams } from '@/services/api';
 import styles from './Filters.module.css';
 
-interface FiltersProps {
-  onSearch: (filters: FilterParams) => void;
-}
+export default function Filters() {
+  const equipment = [
+    { id: 'ac', label: 'AC', icon: '❄️' },
+    { id: 'automatic', label: 'Automatic', icon: '⚙️' },
+    { id: 'kitchen', label: 'Kitchen', icon: '🍳' },
+    { id: 'tv', label: 'TV', icon: '📺' },
+    { id: 'bathroom', label: 'Bathroom', icon: '🚿' },
+    { id: 'radio', label: 'Radio', icon: '📻' },
+    { id: 'refrigerator', label: 'Refrigerator', icon: '🍦' },
+    { id: 'microwave', label: 'Microwave', icon: '🍩' },
+    { id: 'gas', label: 'Gas', icon: '🔥' },
+  ];
 
-export default function Filters({ onSearch }: { onSearch: (filters: FilterParams) => void }) {
-  const [location, setLocation] = useState('');
-  const [equipment, setEquipment] = useState<string[]>([]);
-  const [type, setType] = useState('');
-
-  const handleEquipmentChange = (item: string) => {
-    setEquipment(prev => 
-      prev.includes(item) ? prev.filter(i => i !== item) : [...prev, item]
-    );
-  };
+  const vehicleTypes = [
+    { id: 'van', label: 'Van', icon: '🚐' },
+    { id: 'fullyIntegrated', label: 'Fully Integrated', icon: '🚌' },
+    { id: 'alcove', label: 'Alcove', icon: '🚍' },
+  ];
 
   return (
-    <aside className={styles.container}>
+    <aside className={styles.filters}>
       <div className={styles.locationGroup}>
         <label className={styles.label}>Location</label>
-        <input 
-          type="text" 
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-          placeholder="City, Country" 
-          className={styles.locationInput} 
-        />
+        <div className={styles.inputWrapper}>
+          <input type="text" placeholder="City, Country" className={styles.input} />
+        </div>
       </div>
 
+      <p className={styles.filterTitle}>Filters</p>
+      
       <div className={styles.section}>
         <h3 className={styles.sectionTitle}>Vehicle equipment</h3>
-        <div className={styles.categories}>
-          {['AC', 'Automatic', 'Kitchen', 'TV', 'Shower'].map(item => (
-            <button 
-              key={item} 
-              className={`${styles.filterBtn} ${equipment.includes(item) ? styles.active : ''}`}
-              onClick={() => handleEquipmentChange(item)}
-            >
-              {item}
+        <div className={styles.grid}>
+          {equipment.map((item) => (
+            <button key={item.id} className={styles.filterBtn}>
+              <span className={styles.icon}>{item.icon}</span>
+              <span className={styles.btnLabel}>{item.label}</span>
             </button>
           ))}
         </div>
@@ -49,25 +44,17 @@ export default function Filters({ onSearch }: { onSearch: (filters: FilterParams
 
       <div className={styles.section}>
         <h3 className={styles.sectionTitle}>Vehicle type</h3>
-        <div className={styles.categories}>
-          {['Van', 'Fully Integrated', 'Alcove'].map(vType => (
-            <button 
-              key={vType} 
-              className={`${styles.filterBtn} ${type === vType ? styles.active : ''}`}
-              onClick={() => setType(vType)}
-            >
-              {vType}
+        <div className={styles.grid}>
+          {vehicleTypes.map((type) => (
+            <button key={type.id} className={styles.filterBtn}>
+              <span className={styles.icon}>{type.icon}</span>
+              <span className={styles.btnLabel}>{type.label}</span>
             </button>
           ))}
         </div>
       </div>
 
-      <button 
-        className={styles.searchBtn} 
-        onClick={() => onSearch({ location, equipment, type })}
-      >
-        Search
-      </button>
+      <button className={styles.searchBtn}>Search</button>
     </aside>
   );
 }
