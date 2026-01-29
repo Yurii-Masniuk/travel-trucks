@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 
 interface VehicleState {
-  favorites: string[]; // Масив ID обраних кемперів
+  favorites: string[]; 
   toggleFavorite: (id: string) => void;
 }
 
@@ -13,12 +13,12 @@ export const useVehicleStore = create<VehicleState>()(
       toggleFavorite: (id) =>
         set((state) => ({
           favorites: state.favorites.includes(id)
-            ? state.favorites.filter((favId) => favId !== id) // Видалити, якщо вже є
-            : [...state.favorites, id], // Додати, якщо немає
+            ? state.favorites.filter((favId) => favId !== id)
+            : [...state.favorites, id],
         })),
     }),
     {
-      name: 'favorites-storage', // Ключ у LocalStorage
+      name: 'favorites-storage',
       storage: createJSONStorage(() => localStorage),
     }
   )

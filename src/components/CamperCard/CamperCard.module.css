@@ -2,19 +2,17 @@
     display: flex;
     gap: 24px;
     padding: 24px;
-    border: 1px solid rgba(16, 24, 40, 0.2);
+    border: 1px solid var(--gray-light);
     border-radius: 20px;
-    background-color: #ffffff;
-    height: 358px;
-    /* Фіксована висота */
+    background-color: var(--white);
+    height: 368px;
     box-sizing: border-box;
     width: 888px;
-    /* Або 100%, залежно від контейнера */
 }
 
 .imageWrapper {
     width: 290px;
-    height: 310px;
+    height: 320px;
     flex-shrink: 0;
     border-radius: 10px;
     overflow: hidden;
@@ -31,7 +29,6 @@
     display: flex;
     flex-direction: column;
     min-width: 0;
-    /* КРИТИЧНО для того, щоб внутрішні елементи могли переноситися */
 }
 
 .titleRow {
@@ -43,9 +40,21 @@
 .name {
     font-size: 24px;
     font-weight: 600;
+    line-height: 1.25;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.priceContainer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.price {
+    font-size: 24px;
+    font-weight: 600;
 }
 
 .meta {
@@ -56,48 +65,58 @@
 
 .description {
     font-size: 16px;
-    color: #475467;
+    color: var(--text);
     margin-bottom: 24px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* Обрізаємо опис, щоб він не роздував картку */
 }
 
 .categories {
     display: flex;
     flex-wrap: wrap;
-    /* ОЦЕ ДОЗВОЛЯЄ ПЕРЕНОСИТИ ІКОНКИ НА НОВИЙ РЯДОК */
     gap: 8px;
     width: 100%;
-    max-height: 85px;
-    /* Обмежуємо висоту секції опцій */
+    max-height: 104px;
     overflow: hidden;
+    margin-bottom: 24px;
 }
 
 .badge {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    padding: 8px 12px;
-    /* Компактні бейджі як на макеті */
-    background-color: #F2F4F7;
+    gap: 8px;
+    padding: 12px 18px;
+    background: var(--badges);
     border-radius: 100px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
+    line-height: 1.5;
+    color: var(--main);
+    white-space: nowrap;
 }
-
 .buttonWrapper {
     margin-top: auto;
-    /* Притискає кнопку до низу контенту */
 }
 
 .button {
     display: inline-flex;
+    justify-content: center;
+    align-items: center;
     padding: 16px 40px;
-    background-color: #E44848;
-    color: white !important;
+    background-color: var(--button);
+    color: var(--white) !important;
     border-radius: 200px;
     font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
     text-decoration: none;
+    transition: background-color 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: var(--button-hover);
 }

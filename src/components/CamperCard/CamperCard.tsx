@@ -40,7 +40,6 @@ export default function CamperCard({ camper, isFavorite, onToggleFavorite }: Cam
 
         <p className={styles.description}>{camper.description}</p>
 
-        {/* Секція опцій: тільки ті, що є в об'єкті */}
         <div className={styles.categories}>
           <span className={styles.badge}>⚙️ {camper.transmission}</span>
           <span className={styles.badge}>⛽ {camper.engine}</span>
